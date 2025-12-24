@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"> <!-- Character encoding -->
+    <title>LED Light Controller 💜</title> <!-- Title shown in browser tab -->
+    <link rel="stylesheet" href="style.css"> <!-- External CSS -->
+    <script src="script.js" defer></script> <!-- JavaScript (optional) -->
+    <link rel="icon" href="icon.png"> <!-- Browser tab icon -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <h1>Web Control for the LED lights :)</h1>
+    <p>Now you can turn off your lights from bed :D (just don't lose your phone...)</p>
+</header>
+
+<main>
+    <p>Turn the lights on/off</p>
+    <input type="button" value="OFF" class="toggle-btn" id="toggle-btn">
+
+    <p>What do you want the lights to do?</p>
+    <select name="mode" id="mode">
+        <option value="0">Static</option>
+        <option value="1">Flash</option>
+        <option value="2">FadeStrobe</option>
+        <option value="3">FadeIn</option>
+        <option value="4">FadeOut</option>
+        <option value="5">Breathe</option>
+        <option value="6">Twinkle</option>
+        <option value="7">Candle</option>
+        <option value="8">CometPulse</option>
+        <option value="9">Heartbeat</option>
+    </select>
+
+    <p>Set the brightness</p>
+    <label class="slider-label" id="slider-label">50%</label>
+    <input type="range" class="brightness" id="brightness" min="0" max="100">
+
+    <p>Set the colour of the RGB lights</p>
+    <div class="colour-grid">
+        <button class="colour-btn" id="colour-btn1" style="--preview-color: wheat;">
+            Warm White
+            <span class="preview"></span>
+        </button>
+        <button class="colour-btn" id="colour-btn2" style="--preview-color: white;">
+            Cool White
+            <span class="preview"></span>
+        </button>
+        <button class="colour-btn" id="colour-btn3" style="--preview-color: red;">
+            Red
+            <span class="preview"></span>
+        </button>
+        <button class="colour-btn" id="colour-btn4" style="--preview-color: orange;">
+            Orange
+            <span class="preview"></span>
+        </button>
+        <button class="colour-btn" id="colour-btn5" style="--preview-color: yellow;">
+            Yellow
+            <span class="preview"></span>
+        </button>
+        <button class="colour-btn" id="colour-btn6" style="--preview-color: green;">
+            Green
+            <span class="preview"></span>
+        </button>
+        <button class="colour-btn" id="colour-btn7" style="--preview-color: blue;">
+            Blue
+            <span class="preview"></span>
+        </button>
+        <button class="colour-btn" id="colour-btn8" style="--preview-color: purple;">
+            Purple
+            <span class="preview"></span>
+        </button>
+        <button class="colour-btn" id="colour-btn9">
+            Use Custom:
+            <input type="color" class="colourSelect" id="colourSelect">
+        </button>
+    </div>
+
+    <p>Use with to switch between manual and web control</p>
+    <input type="button" value="Manual Control" class="toggle-btn" id="toggle-btn-control">
+
+</main>
+
+<footer>
+    <br>
+</footer>
+
+</body>
+
+</html>

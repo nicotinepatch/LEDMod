@@ -1,0 +1,252 @@
+html {
+    margin: 0px;
+    padding: 0px;
+
+    font-family: 'Comic Neue', Comic Sans MS, cursive, sans-serif;
+    font: bold;
+}
+
+body {
+    background-color: rgb(255, 234, 252);
+    color:black;
+    width: 100%;
+    margin: 0;
+}
+
+header {
+    background-color: rgb(167, 53, 171);
+    padding: 5px 10px 20px 0;
+    margin: 0;
+}
+
+header h1 {
+    padding-left: 10px;
+}
+header p {
+    padding-left: 10px;
+}
+
+main {
+    background-color: rgb(255, 234, 252);
+    color: rgb(35, 35, 35);
+    /*font-family:Arial, Helvetica, sans-serif;*/
+
+    margin: 10px 10px;
+    padding: 10px 10px calc(20% - 50px);
+}
+
+footer {
+    background-color: rgb(16, 16, 16);
+    padding: 50px 0 0 0;
+    height: 100%;
+}
+
+p {
+    padding: 0;
+    margin: 15px 0 5px 0;
+}
+
+/* Toggle button */
+.toggle-btn {
+    font-size: 15px;
+    background-color: rgb(240, 29, 29);
+    color: white;
+    padding: 7px 16px;
+    border: none;
+    font-weight: bold;
+    border-radius: 15px;
+    line-height: 22.5px;
+    cursor: pointer;
+    transition: box-shadow 0.15s;
+
+    min-width: 80px;
+    text-align: center;
+    margin: 0 5px 2px 0;
+}
+
+.toggle-btn.on {
+    background-color: rgb(48, 180, 88);
+}
+
+.toggle-btn:hover {
+    opacity: 0.7;
+}
+
+.toggle-btn:active {
+    opacity: 0.4;
+    transition: none;
+}
+
+/* Mode Select */
+select {
+    font-size: 15px;
+    background-color: rgb(176, 48, 180);
+    color: white;
+    padding: 7px 16px;
+    border: none;
+    font-weight: bold;
+    border-radius: 15px;
+    line-height: 22.5px;
+    cursor: pointer;
+    transition: box-shadow 0.15s;
+
+    min-width: 80px;
+    text-align: center;
+    margin: 0 5px 2px 0;
+}
+
+select:hover {
+    opacity: 0.7;
+}
+
+select:active {
+    opacity: 0.4;
+}
+
+option {
+    font-size: 15px;
+    background-color: rgb(141, 31, 145);
+    color: white;
+    padding: 0px 16px;
+    border: none;
+    font-weight: bold;
+    border-radius: 15px;
+    line-height: 22.5px;
+    cursor: pointer;
+    transition: box-shadow 0.15s;
+
+    min-width: 80px;
+    text-align: left;
+}
+
+option:checked {
+    background-color: rgb(74, 17, 76);
+}
+
+/* Brightness selector (including its thumb and track*/
+.brightness {
+    height: 6px;
+    border-radius: 4px;
+    width: 220px;
+
+    appearance: none;
+    -webkit-appearance: none;
+    background: linear-gradient(
+        to right, rgb(74, 17, 76) 50%,
+        #ddd 50%
+    );
+
+    margin: 0 5px 2px 0;
+}
+
+.brightness::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2pt solid rgb(141, 31, 145);
+    background: rgb(176, 48, 180);
+
+    cursor: pointer;
+}
+
+.brightness:hover {
+    color: red;
+}
+
+.slider-label {
+    color:rgb(154, 154, 154);
+}
+
+/* Colour select */
+.colour-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;   /* row gap / column gap */
+}
+.colour-btn {
+    font-size: 15px;
+    background-color: white;
+    color: black;
+    padding: 7px 16px;
+    border: 2px solid;
+    border-color: rgb(176, 48, 180);
+    font-weight: bold;
+    border-radius: 15px;
+    line-height: 22.5px;
+    cursor: pointer;
+    transition: box-shadow 0.15s;
+
+    min-width: 140px;
+    height: 40px;
+    text-align: left;
+
+    position: relative;
+    padding-right: 10px;
+    overflow: visible;
+}
+
+.colour-btn .preview {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--preview-color, black);
+    border: 1px solid #333;
+}
+
+.colour-btn input[type="color"] {
+    width: 50px;
+    padding: 0;
+    border: none;
+    margin: 0;
+    margin-left: 5px;
+    border-radius: 75%;
+    cursor:crosshair;
+    vertical-align: middle;
+    background: none;
+}
+
+/* .colour-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--preview-color, black);
+    border: 1px solid #333;
+} */
+
+.colour-btn.on {
+    background-color: rgb(83, 203, 119);
+}
+
+.colour-btn:hover {
+    opacity: 0.7;
+}
+
+.colour-btn:active {
+    opacity: 0.4;
+    transition: none;
+}
+
+.colour-select {
+    color: white;
+    padding: 7px 16px;
+    border: none;
+    font-weight: bold;
+    border-radius: 15px;
+    line-height: 22.5px;
+    cursor: pointer;
+    transition: box-shadow 0.15s;
+
+    min-width: 80px;
+    text-align: center;
+    margin: 0 5px 2px 0;
+}
