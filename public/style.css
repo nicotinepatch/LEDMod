@@ -203,7 +203,7 @@ option {
 input[type="color"] {
     -webkit-appearance: none;
     appearance: none;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
     /* .colour-btn::after {
