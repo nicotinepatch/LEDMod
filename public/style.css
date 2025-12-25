@@ -173,7 +173,11 @@ option {
     text-align: left;
     position: relative;
     padding-right: 10px;
+
     overflow: visible;
+    display: flex;
+    align-items: center; /* Vertically center content */
+    justify-content: space-between; /* Keep text left, preview/right aligned */
 }
 
     .colour-btn .preview {
@@ -200,9 +204,10 @@ option {
         background: none;
 
         position: absolute;
-        inset: 0;
-        opacity: 0;
-        cursor: pointer;
+        inset: 0; /* fills the button */
+        opacity: 0; /* invisible */
+        cursor: pointer; /* still clickable */
+        border-radius: 15px; /* match button shape for click area */
     }
 
     /* .colour-btn::after {
