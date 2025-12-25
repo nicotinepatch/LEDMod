@@ -198,13 +198,12 @@ option {
         cursor: crosshair;
         vertical-align: middle;
         background: none;
-    }
 
-input[type="color"] {
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 5px;
-}
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
 
     /* .colour-btn::after {
     content: '';
