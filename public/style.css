@@ -199,11 +199,6 @@ option {
         cursor: crosshair;
         vertical-align: middle;
         background: none;
-
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        cursor: pointer;
     }
 
     /* .colour-btn::after {
