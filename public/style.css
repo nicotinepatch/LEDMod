@@ -190,6 +190,7 @@ option {
     }
 
     .colour-btn input[type="color"] {
+        appearance: none;
         width: 50px;
         padding: 0;
         border: none;
