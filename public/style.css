@@ -198,16 +198,17 @@ option {
         border: none;
         margin: 0;
         margin-left: 5px;
-        border-radius: 75%;
+/*        border-radius: 75%;*/
         cursor: crosshair;
         vertical-align: middle;
         background: none;
-
-        position: absolute;
-        inset: 0; /* fills the button */
         opacity: 0; /* invisible */
-        cursor: pointer; /* still clickable */
-        border-radius: 15px; /* match button shape for click area */
+
+        background: none;
+        border-radius: 15px; /* matches button */
+        opacity: 0; /* invisible */
+        position: relative; /* stay inside button */
+        z-index: 2; /* make sure clickable */
     }
 
     /* .colour-btn::after {
