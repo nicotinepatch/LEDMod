@@ -166,7 +166,7 @@ sofiasButt_on.addEventListener('click', function () {
         currRed += 15;
         hitComment.style.color += "#" + currRed.toString(16).toUpperCase().padStart(6, "0");
 
-        weight++;
+        weight += 50;
         hitComment.style.weight = JSON.stringify(weight);
     }
 });
