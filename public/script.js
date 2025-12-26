@@ -139,13 +139,24 @@ colourPicker.addEventListener('input', function () {
 
 const sofiasButt_on = document.getElementById('tiagottaflatass');
 const hitLabel = document.getElementById('hitButton-label');
+const hitComment = document.getElementById('butt-comment');
 let hitCount = 0;
 sofiasButt_on.addEventListener('click', function () {
     hitCount++;
     hitLabel.textContent = "Hit Count: " + JSON.stringify(hitCount);
 
     if (hitCount > 0) {
+        if (hitCount = 1) sofiasButt_on.value = ":O I'VE BEEN SLAPPED?";
+        if (hitCount = 5) sofiasButt_on.value = "😳 WELL WELL WELL...🍑🍑🍑🍑";
         sofiasButt_on.value += "🍑";
         sofiasButt_on.classList.add('on');
+
+        if (hitComment % 2 === 0) {
+            hitComment.textContent = "THANK YOU"
+        } else {
+            hitComment.textContent = "AND WHAT ABOUT THE OTHER CHEEK HUH?";
+        }
+        hitComment.style.fontSize++;
+        hitComment.style.color += (1 << 5);
     }
 });
