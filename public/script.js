@@ -159,7 +159,7 @@ sofiasButt_on.addEventListener('click', function () {
             hitComment.textContent = "AND WHAT ABOUT THE OTHER CHEEK HUH?";
         }
         hitComment.style.fontSize = hitCount;
-        console.log(hitComment.style.color);
+        console.log(JSON.parse(hitComment.style.color));
         hitComment.style.color += (1 << 5);
     }
 });
