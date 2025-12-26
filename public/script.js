@@ -141,6 +141,7 @@ const sofiasButt_on = document.getElementById('tiagottaflatass');
 const hitLabel = document.getElementById('hitButton-label');
 const hitComment = document.getElementById('butt-comment');
 let hitCount = 0;
+let currRed = 0;
 sofiasButt_on.addEventListener('click', function () {
     hitCount++;
     hitLabel.textContent = "Hit Count: " + JSON.stringify(hitCount);
@@ -158,8 +159,8 @@ sofiasButt_on.addEventListener('click', function () {
         } else {
             hitComment.textContent = "AND WHAT ABOUT THE OTHER CHEEK HUH?";
         }
-        hitComment.style.fontSize = hitCount;
-        console.log(JSON.parse(hitComment.style.color));
-        //hitComment.style.color += (1 << 5);
+        hitComment.style.fontSize = hitCount + "px";
+        currRed += 0x010000;
+        hitComment.style.color += "#" + currRed;
     }
 });
