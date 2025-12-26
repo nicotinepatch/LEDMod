@@ -1,4 +1,4 @@
-// ------ TOGGLE BUTTONS
+﻿// ------ TOGGLE BUTTONS
 // Get the button elements
 const toggleBtn = document.getElementById('toggle-btn');
 const controlBtn = document.getElementById('toggle-btn-control');
@@ -145,6 +145,7 @@ sofiasButt_on.addEventListener('click', function () {
     hitLabel.textContent = "Hit Count: " + JSON.stringify(hitCount);
 
     if (hitCount > 0) {
+        sofiasButt_on.value += "🍑";
         sofiasButt_on.classList.add('on');
     }
 });
