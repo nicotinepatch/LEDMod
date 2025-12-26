@@ -144,7 +144,7 @@ sofiasButt_on.addEventListener('click', function () {
     hitCount++;
     hitLabel.textContent = "Hit Count: " + JSON.stringify(hitCount);
 
-    if (hitCount < 0) {
+    if (hitCount > 0) {
         sofiasButt_on.classList.add('on');
     }
 });
