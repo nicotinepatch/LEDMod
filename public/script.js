@@ -136,3 +136,15 @@ colourPicker.addEventListener('input', function () {
         body: JSON.stringify({ colour })
     });
 });
+
+const sofiasButt_on = document.getElementById('tiagottaflatass');
+const hitLabel = document.getElementById('hitButton-label');
+let hitCount = 0;
+sofiasButt_on.addEventListener('click', function () {
+    hitCount++;
+    hitLabel.textContent = "Hit Count: " + JSON.stringify(hitLabel);
+
+    if (hitCount < 0) {
+        this.classList.add('on');
+    }
+});
