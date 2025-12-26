@@ -163,6 +163,6 @@ sofiasButt_on.addEventListener('click', function () {
         }
         hitComment.style.fontSize = (hitCount + 4) + "px";
         currRed += 15;
-        hitComment.style.color += "#" + currRed;
+        hitComment.style.color += "#" + currRed.toString(16).toUpperCase().padStart(6, "0");
     }
 });
