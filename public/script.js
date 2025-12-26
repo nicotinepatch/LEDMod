@@ -156,7 +156,7 @@ sofiasButt_on.addEventListener('click', function () {
         } else {
             hitComment.textContent = "AND WHAT ABOUT THE OTHER CHEEK HUH?";
         }
-        hitComment.style.fontSize++;
-        hitComment.style.color += (1 << 5);
+        //hitComment.style.fontSize++;
+        //hitComment.style.color += (1 << 5);
     }
 });
