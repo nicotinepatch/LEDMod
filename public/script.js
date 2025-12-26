@@ -142,9 +142,9 @@ const hitLabel = document.getElementById('hitButton-label');
 let hitCount = 0;
 sofiasButt_on.addEventListener('click', function () {
     hitCount++;
-    hitLabel.textContent = "Hit Count: " + JSON.stringify(hitLabel);
+    hitLabel.textContent = "Hit Count: " + JSON.stringify(hitCount);
 
     if (hitCount < 0) {
-        this.classList.add('on');
+        sofiasButt_on.classList.add('on');
     }
 });
