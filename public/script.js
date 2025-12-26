@@ -160,6 +160,6 @@ sofiasButt_on.addEventListener('click', function () {
         }
         hitComment.style.fontSize = hitCount;
         console.log(JSON.parse(hitComment.style.color));
-        hitComment.style.color += (1 << 5);
+        //hitComment.style.color += (1 << 5);
     }
 });
