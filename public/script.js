@@ -146,8 +146,8 @@ sofiasButt_on.addEventListener('click', function () {
     hitLabel.textContent = "Hit Count: " + JSON.stringify(hitCount);
 
     if (hitCount > 0) {
-        if (hitCount = 1) sofiasButt_on.value = ":O I'VE BEEN SLAPPED?";
-        if (hitCount = 5) sofiasButt_on.value = "😳 WELL WELL WELL...🍑🍑🍑🍑";
+        if (hitCount === 1) sofiasButt_on.value = ":O I'VE BEEN SLAPPED?";
+        if (hitCount === 5) sofiasButt_on.value = "😳 WELL WELL WELL...🍑🍑🍑🍑";
         sofiasButt_on.value += "🍑";
         sofiasButt_on.classList.add('on');
 
