@@ -161,8 +161,8 @@ sofiasButt_on.addEventListener('click', function () {
         } else {
             hitComment.textContent = "AND WHAT ABOUT THE OTHER CHEEK HUH?";
         }
-        hitComment.style.fontSize = hitCount + "px";
-        currRed += 0x090000;
+        hitComment.style.fontSize = (hitCount + 4) + "px";
+        currRed += 15;
         hitComment.style.color += "#" + currRed;
     }
 });
