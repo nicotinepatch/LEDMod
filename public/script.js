@@ -142,6 +142,7 @@ const hitLabel = document.getElementById('hitButton-label');
 const hitComment = document.getElementById('butt-comment');
 let hitCount = 0;
 let currRed = 0;
+let weight = 200;
 sofiasButt_on.addEventListener('click', function () {
     hitCount++;
     hitLabel.textContent = "Hit Count: " + JSON.stringify(hitCount);
@@ -164,5 +165,8 @@ sofiasButt_on.addEventListener('click', function () {
         hitComment.style.fontSize = (hitCount + 4) + "px";
         currRed += 15;
         hitComment.style.color += "#" + currRed.toString(16).toUpperCase().padStart(6, "0");
+
+        weight++;
+        hitComment.style.weight = JSON.stringify(weight);
     }
 });
