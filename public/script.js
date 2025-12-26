@@ -151,12 +151,12 @@ sofiasButt_on.addEventListener('click', function () {
         sofiasButt_on.value += "🍑";
         sofiasButt_on.classList.add('on');
 
-        if (hitComment % 2 === 0) {
+        if (hitCount % 2 === 0) {
             hitComment.textContent = "THANK YOU"
         } else {
             hitComment.textContent = "AND WHAT ABOUT THE OTHER CHEEK HUH?";
         }
-        //hitComment.style.fontSize++;
-        //hitComment.style.color += (1 << 5);
+        hitComment.style.fontSize++;
+        hitComment.style.color += (1 << 5);
     }
 });
