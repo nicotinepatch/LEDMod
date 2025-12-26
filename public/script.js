@@ -146,6 +146,8 @@ sofiasButt_on.addEventListener('click', function () {
     hitCount++;
     hitLabel.textContent = "Hit Count: " + JSON.stringify(hitCount);
 
+    hitComment.style.color = "#000000";
+
     if (hitCount > 0) {
         if (hitCount === 1) sofiasButt_on.value = ":O I'VE BEEN SLAPPED?";
         if (hitCount === 5) sofiasButt_on.value = "😳 WELL WELL WELL...🍑🍑🍑🍑";
