@@ -134,9 +134,10 @@ app.get('/hitCount', (req, res) => {
     res.json({ lifetimeHits: totalHits });
 });
 
-app.listen(3000, () => {
-    console.log('Server running on http://localhost:3000');
-});
+// For local deployment:
+//app.listen(3000, () => {
+//    console.log('Server running on http://localhost:3000');
+//});
 
 // For Vercel deployment:
 module.exports = app;
