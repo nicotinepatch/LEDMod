@@ -5,15 +5,19 @@ const bodyParser = require('body-parser');
 app.use(express.static('public')); // serve HTML/JS/CSS
 app.use(bodyParser.json());
 
+// MAKE IT WORK WITH VERCEL
+
+// STATE VARIABLES
 let on = false;
 let modeVal = 0;
-let brightnessVal = 0;
+let brightnessVal = 50;
 let colourVal = {
     R: 0,
     G: 0,
     B: 0,
 };
 let overrideVal = 0;
+let totalHits = 0;
 
 
 // on/off trigger
@@ -101,6 +105,33 @@ app.post('/webOverride', (req, res) => {
 
 app.get('/override', (req, res) => {
     res.json({ override: overrideVal });
+});
+
+// EVERYTHING
+app.get("/state", (req, res) => {
+    res.json({
+        led: on,
+        mode: modeVal,
+        brightness: brightnessVal,
+        colour: colourVal,
+        webOverride: overrideVal
+    });
+});
+
+// TOTAL HITS (FOR FRONT END ONLY)
+app.post('/hitCount', (req, res) => {
+    if (req.body !== undefined) console.log(JSON.stringify(req.body));
+    if (req.body.hit === true) {
+        totalHits++;
+        console.log(`ANOTHER HIT DETECTED: ${totalHits}`);
+        res.json({ status: 'ok', lifetimeHits: totalHits });
+    } else {
+        res.status(400).json({ status: 'error', message: 'No hit occured' });
+    }
+});
+
+app.get('/hitCount', (req, res) => {
+    res.json({ lifetimeHits: totalHits });
 });
 
 app.listen(3000, () => {
