@@ -37,6 +37,9 @@ module.exports = serverless(app);
 
 //// Default route --> Confirm its running
 //// app.use runs for EVERY method (and EVERY route by default, default route is always '/' if unspecified)
+//// - prefix based: E.g /api will run for /api, /api/led, /api/mode, /api/ANYTHING...
+//// app.METHOD (e.g app.get, app.post) runs for the specified method and route (default route is always '/' if unspecified))
+//// - NOT prefix based: E.g /api will run for /api ONLY but NOT /api/led, /api/mode, /api/ANYTHING...
 //app.get('/', (req, res) => {
 //    res.send('Hello! The server is running. Use the API endpoints to control the LED strip.');
 //});
