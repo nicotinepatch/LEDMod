@@ -2,10 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-app.use(express.static('public')); // serve HTML/JS/CSS
+app.use(express.static('public')); // serve /public and its contents (HTML, JS, CSS)
 app.use(bodyParser.json());
-
-// MAKE IT WORK WITH VERCEL
 
 // STATE VARIABLES
 let on = false;
@@ -19,6 +17,10 @@ let colourVal = {
 let overrideVal = 0;
 let totalHits = 0;
 
+// Default route --> Confirm its running
+app.use('/', (req, res) => {
+    res.send('Hello! The server is running. Use the API endpoints to control the LED strip.');
+});
 
 // on/off trigger
 app.post('/led', (req, res) => {
