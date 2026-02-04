@@ -140,6 +140,7 @@ colourPicker.addEventListener('input', function () {
 const sofiasButt_on = document.getElementById('tiagottaflatass');
 const hitLabel = document.getElementById('hitButton-label');
 const hitComment = document.getElementById('butt-comment');
+const sumHitComment = document.getElementById('totalHitCount');
 let hitCount = 0;
 let currRed = 0;
 let weight = 200;
@@ -168,5 +169,19 @@ sofiasButt_on.addEventListener('click', function () {
 
         weight += 50;
         hitComment.style.weight = JSON.stringify(weight);
+
+        //// Button was hit:
+        //// 1. Update total hit counter in server by signalling the hits occurance
+        //fetch('/hitCount', {
+        //    method: 'POST',
+        //    headers: { 'Content-Type': 'application/json' },
+        //    body: JSON.stringify({ colour })
+        //});
+
+        //// 2. Get the new hit counter value from the server (default fetch method is GET)
+        //let newTotal = fetch('/hitCount');
+
+        //// 3. Update value in html
+        //sumHitComment.textContent = "Total Lifetime Slaps: " + newTotal;
     }
 });
