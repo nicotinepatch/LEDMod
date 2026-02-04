@@ -18,7 +18,8 @@ let overrideVal = 0;
 let totalHits = 0;
 
 // Default route --> Confirm its running
-app.use('/', (req, res) => {
+// app.use runs for EVERY method (and EVERY route by default, default route is always '/' if unspecified)
+app.get('/', (req, res) => {
     res.send('Hello! The server is running. Use the API endpoints to control the LED strip.');
 });
 
@@ -141,5 +142,7 @@ app.get('/hitCount', (req, res) => {
 //    console.log('Server running on http://localhost:3000');
 //});
 
-// For Vercel deployment:
-module.exports = app;
+// For Vercel deployment: wrap as serverless and serve to Vercel:
+//module.exports = app;
+const serverless = require('serverless-http');
+module.exports = serverless(app);
