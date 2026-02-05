@@ -1,17 +1,16 @@
 const express = require('express');
-const serverless = require('serverless-http');
 
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send("API alive");
+    res.send('API alive');
 });
 
 app.get('/led', (req, res) => {
     res.json({ led: true });
 });
 
-module.exports = serverless(app);
+module.exports = app;
 
 //const express = require('express');
 //const app = express();
