@@ -21,7 +21,7 @@
   "homepage": "https://github.com/nicotinepatch/LEDMod#readme",
   "dependencies": {
     "body-parser": "^2.2.1",
-    "express": "^5.2.1",
+    "express": "^4.22.1",
     "serverless-http": "^4.0.0"
   }
 }
