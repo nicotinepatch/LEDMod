@@ -1,16 +1,27 @@
-const express = require('express');
-
+const express = require("express");
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('API alive');
-});
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
-app.get('/led', (req, res) => {
-    res.json({ led: true });
-});
+app.listen(3000, () => console.log("Server ready on port 3000."));
 
 module.exports = app;
+
+//const express = require('express');
+
+//const app = express();
+
+//app.get('/', (req, res) => {
+//    res.send('API alive');
+//});
+
+//app.get('/led', (req, res) => {
+//    res.json({ led: true });
+//});
+
+//module.exports = app;
+
+//////////////////////////
 
 //const express = require('express');
 //const app = express();
