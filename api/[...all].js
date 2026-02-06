@@ -53,7 +53,7 @@ app.post('/api/state', async (req, res) => {
     // ... = spread operator: creates a new object with all the properties of state, then overwrites/adds any properties from req.body
     const newState = {
         ...state,
-        ...req.body
+        ...req.body,
         updatedAt: new Date().toISOString() // Add/update timestamp for when state was last updated
     };
 
