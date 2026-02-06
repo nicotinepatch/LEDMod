@@ -4,11 +4,11 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
     res.send("Express on Vercel is running");
 });
 
-app.get("/led", (req, res) => {
+app.get("/api/led", (req, res) => {
     res.json({ led: true });
 });
 
