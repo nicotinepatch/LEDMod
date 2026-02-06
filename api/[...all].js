@@ -57,6 +57,7 @@ module.exports = app;
 // - For local deployment, can use /led, /mode, /brightness, /colour, /webOverride, /state, /hitCount
 // - For Vercel deployment, need to use /api/led, /api/mode, /api/brightness, /api/colour, /api/webOverride, /api/state, /api/hitCount
 // Also doesn't have kv functionality, but can be adapted to use it by replacing the state variables with kv.get and kv.set calls (and making the route handlers async).
+// Revert to Commit 7e4bf227 for script.js file that works with this version of the API routes (separate routes for each endpoint instead of unified [...all].js route).
 
 //const express = require('express');
 //const app = express();

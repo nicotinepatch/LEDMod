@@ -19,10 +19,11 @@ toggleBtn.addEventListener('click', function () {
         toggleBtn.classList.remove('on');
     }
 
-    fetch('/led', {
+    // on
+    fetch('/api/state', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ led: isOn })
+        body: JSON.stringify({ on: isOn })
     });
 });
 
@@ -37,7 +38,8 @@ controlBtn.addEventListener('click', function () {
         controlBtn.classList.remove('on');
     }
 
-    fetch('/webOverride', {
+    // webOveride
+    fetch('/api/state', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ webOverride: webCont })
@@ -47,7 +49,8 @@ controlBtn.addEventListener('click', function () {
 // ------ MODE DROP DOWN
 const modeVal = document.getElementById('mode');
 modeVal.addEventListener('change', function () {
-    fetch('mode', {
+    // mode
+    fetch('/api/state', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mode: modeVal.value })
@@ -70,7 +73,8 @@ brightness.addEventListener('input', () => {
         )
     `;
 
-    fetch('/brightness', {
+    // brightness
+    fetch('/api/state', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ brightness: parseInt(value) })
@@ -110,7 +114,8 @@ for (let i = 0; i < colourBtns.length; i++) {
         console.log(`Preset colour selected: ${colour}`);
 
         // Send to server
-        fetch('/colour', {
+        // colour
+        fetch('/api/state', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ colour: colMap[colour] })
@@ -130,7 +135,8 @@ colourPicker.addEventListener('input', function () {
 
     const colour = this.value; // Always the current picked color
 
-    fetch('/colour', {
+    // colour
+    fetch('/api/state', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ colour })
