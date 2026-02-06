@@ -7,6 +7,15 @@ app.use(bodyParser.json());
 
 const { kv } = require('@vercel/kv');
 
+const defaultState = {
+    webOverride: false,
+    on: false,
+    brightness: 50,
+    mode: 0,
+    colour: "#000000",
+    totalHits: 0
+};
+
 app.get('/api/testkv', async (req, res) => {
     try {
         console.log("Testing KV...");
@@ -31,7 +40,7 @@ app.get('/api/testkv', async (req, res) => {
 // [...all].js will match all routes under /api, so we can use it to handle all API requests in one file:
 // - All / api /... can be handled like this, e.g /api/info, /api/led, /api/mode, /api/ANYTHING...
 app.get("/api/state", async (req, res) => {
-    const state = await kv.get("state") || {};      // if state doesn't exist yet (kv.get returns null), use empty object as default
+    const state = await kv.get("state") || defaultState;      // if state doesn't exist yet (kv.get returns null), use empty object as default
     res.json(state);
 });
 
