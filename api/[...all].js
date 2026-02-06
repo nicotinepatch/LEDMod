@@ -8,10 +8,23 @@ app.use(bodyParser.json());
 const { kv } = require('@vercel/kv');
 
 app.get('/api/testkv', async (req, res) => {
-    await kv.set('ledmod:led', on);
-    res.json({kvSet: true})
-    //const value = await kv.get('ledmod:led');
-    //res.json({ value });
+    //await kv.set('ledmod:led', on);
+    //res.json({kvSet: true})
+    ////const value = await kv.get('ledmod:led');
+    ////res.json({ value });
+
+    try {
+        console.log("Testing KV...");
+
+        await kv.set("test:key", "hello");
+        const value = await kv.get("test:key");
+
+        res.json({ success: true, value });
+
+    } catch (err) {
+        console.error("KV ERROR:", err);
+        res.status(500).json({ error: err.message });
+    }
 });
 
 // Doesn't work: needs to be in index.js
