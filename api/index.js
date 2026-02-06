@@ -1,15 +1,19 @@
 const express = require("express");
+
 const app = express();
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.use(express.json());
 
-//app.listen(3000, () => console.log("Server ready on port 3000."));
+app.get("/", (req, res) => {
+    res.send("Express on Vercel is running");
+});
 
 app.get("/led", (req, res) => {
     res.json({ led: true });
 });
 
 module.exports = (req, res) => app(req, res);
+
 //module.exports = app;
 
 
