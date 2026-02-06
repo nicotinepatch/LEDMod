@@ -1,6 +1,15 @@
 ﻿// ===== ON PAGE LOAD =====
 // Fetch the current state from the server AND parse JSON into JS object
-const currState = await fetch('/api/state').then(r => r.json()); // Method is GET by default, requires no payload/body
+//const currState = await fetch('/api/state').then(r => r.json()); // Method is GET by default, requires no payload/body
+const currState = {
+    webOverride: false,
+    on: false,
+    brightness: 50,
+    mode: 0,
+    colour: "0x000000",
+    totalHits: 0,
+    updatedAt: new Date().toISOString() // For testing and data validation
+};
 
 // Update the UI to reflect the current state (at file end for buttons, in relevant sections for rest)
 // ========================
