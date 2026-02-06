@@ -1,11 +1,18 @@
-﻿// ------ TOGGLE BUTTONS
+﻿// ===== ON PAGE LOAD =====
+// Fetch the current state from the server AND parse JSON into JS object
+const currState = await fetch('/api/state').then(r => r.json()); // Method is GET by default, requires no payload/body
+
+// Update the UI to reflect the current state (at file end for buttons, in relevant sections for rest)
+// ========================
+
+// ------ TOGGLE BUTTONS
 // Get the button elements
 const toggleBtn = document.getElementById('toggle-btn');
 const controlBtn = document.getElementById('toggle-btn-control');
 
 // Track the state (true = ON, false = OFF)
-let isOn = false;
-let webCont = false;
+let isOn = currState.on;
+let webCont = currState.webOverride;
 
 // Add click event listener
 toggleBtn.addEventListener('click', function () {
@@ -48,6 +55,7 @@ controlBtn.addEventListener('click', function () {
 
 // ------ MODE DROP DOWN
 const modeVal = document.getElementById('mode');
+modeVal.value = currState.mode; // Set initial value based on server state
 modeVal.addEventListener('change', function () {
     // mode
     fetch('/api/state', {
@@ -60,6 +68,8 @@ modeVal.addEventListener('change', function () {
 // ------ SLIDER
 const brightness = document.getElementById('brightness');
 const label = document.getElementById('slider-label');
+brightness.value = currState.brightness; // Set initial value based on server state
+label.textContent = brightness.value + '%'; // Set initial label text
 
 brightness.addEventListener('input', () => {
     const value = brightness.value;
@@ -191,3 +201,21 @@ sofiasButt_on.addEventListener('click', function () {
         //sumHitComment.textContent = "Total Lifetime Slaps: " + newTotal;
     }
 });
+
+// ====== INIT STATE ON PAGE LOAD (BUTTONS) ======
+// Toggle buttons
+if (currState.on) toggleBtn.click(); // Simulate a click to set the correct state and UI
+if (currState.webOverride) controlBtn.click();
+
+// Colour buttons
+let presetSelected = false;
+for (let i = 0; i < colourBtns.length; i++) {
+    if (currState.colour === colMap[i]) {
+        presetSelected = true;
+        colourBtns[i].click();
+        break;
+    }
+}
+if (!presetSelected) {
+    colourPicker.click();
+)
