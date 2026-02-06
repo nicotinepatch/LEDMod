@@ -12,9 +12,9 @@ app.get("/api/led", (req, res) => {
     res.json({ led: true });
 });
 
-module.exports = (req, res) => app(req, res);
+//module.exports = (req, res) => app(req, res);
 
-//module.exports = app;
+module.exports = app;
 
 
 //const express = require('express');
