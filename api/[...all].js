@@ -8,11 +8,6 @@ app.use(bodyParser.json());
 const { kv } = require('@vercel/kv');
 
 app.get('/api/testkv', async (req, res) => {
-    //await kv.set('ledmod:led', on);
-    //res.json({kvSet: true})
-    ////const value = await kv.get('ledmod:led');
-    ////res.json({ value });
-
     try {
         console.log("Testing KV...");
 
@@ -32,15 +27,36 @@ app.get('/api/testkv', async (req, res) => {
 //    res.send("Express on Vercel is running");
 //});
 
+// UNIFIED ROUTES FOR SIMIPLICITY (SEE BELOW FOR SEPARATE ROUTES)
 // [...all].js will match all routes under /api, so we can use it to handle all API requests in one file:
 // - All / api /... can be handled like this, e.g /api/info, /api/led, /api/mode, /api/ANYTHING...
-app.get("/api/info", (req, res) => {
-    res.json({ led: true });
+app.get("/api/state", async (req, res) => {
+    const state = await kv.get("state") || {};      // if state doesn't exist yet (kv.get returns null), use empty object as default
+    res.json(state);
+});
+
+app.post('/api/state', async (req, res) => {
+    // get existing state from KV
+    const state = await kv.get("state") || {};
+
+    // Merge with new values from request body
+    // ... = spread operator: creates a new object with all the properties of state, then overwrites/adds any properties from req.body
+    const newState = {
+        ...state,
+        ...req.body
+    };
+
+    // Save the updated state back to KV and return it in the response
+    await kv.set("state", newState);
+    res.json(newState);
 });
 
 module.exports = app;
 
-//////////////////////////
+////////////////////////// Each route seperate (end points need to have /api prefix for Vercel deployment) //////////////////////////
+// - For local deployment, can use /led, /mode, /brightness, /colour, /webOverride, /state, /hitCount
+// - For Vercel deployment, need to use /api/led, /api/mode, /api/brightness, /api/colour, /api/webOverride, /api/state, /api/hitCount
+// Also doesn't have kv functionality, but can be adapted to use it by replacing the state variables with kv.get and kv.set calls (and making the route handlers async).
 
 //const express = require('express');
 //const app = express();
