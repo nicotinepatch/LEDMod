@@ -216,6 +216,6 @@ for (let i = 0; i < colourBtns.length; i++) {
         break;
     }
 }
-if (!presetSelected) {
+if (!presetSelected) (
     colourPicker.click();
 )
