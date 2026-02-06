@@ -12,8 +12,9 @@ const defaultState = {
     on: false,
     brightness: 50,
     mode: 0,
-    colour: "#000000",
-    totalHits: 0
+    colour: "0x000000",
+    totalHits: 0,
+    updatedAt: new Date().toISOString() // For testing and data validation
 };
 
 app.get('/api/testkv', async (req, res) => {
@@ -53,6 +54,7 @@ app.post('/api/state', async (req, res) => {
     const newState = {
         ...state,
         ...req.body
+        updatedAt: new Date().toISOString() // Add/update timestamp for when state was last updated
     };
 
     // Save the updated state back to KV and return it in the response
