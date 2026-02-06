@@ -8,7 +8,6 @@ app.use(bodyParser.json());
 const { kv } = require('@vercel/kv');
 
 app.get('/api/testkv', async (req, res) => {
-    res.json({ kvSet: false })
     await kv.set('ledmod:led', on);
     res.json({kvSet: true})
     //const value = await kv.get('ledmod:led');
