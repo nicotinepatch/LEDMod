@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/nicotinepatch/LEDMod#readme",
   "dependencies": {
+    "@vercel/kv": "^3.0.0",
     "body-parser": "^2.2.1",
     "express": "^4.22.1"
   }

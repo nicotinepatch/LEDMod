@@ -1,35 +1,30 @@
 const express = require("express");
-
 const app = express();
+const bodyParser = require('body-parser');
 
 app.use(express.json());
+app.use(bodyParser.json());
 
-app.get("/api", (req, res) => {
-    res.send("Express on Vercel is running");
+const { kv } = require('@vercel/kv');
+
+app.get('/api/testkv', async (req, res) => {
+    await kv.set('ledmod:led', on);
+    const value = await kv.get('ledmod:led');
+    res.json({ value });
 });
 
-app.get("/led", (req, res) => {
+// Doesn't work: needs to be in index.js
+//app.get("/api", (req, res) => {
+//    res.send("Express on Vercel is running");
+//});
+
+// [...all].js will match all routes under /api, so we can use it to handle all API requests in one file:
+// - All / api /... can be handled like this, e.g /api/info, /api/led, /api/mode, /api/ANYTHING...
+app.get("/api/info", (req, res) => {
     res.json({ led: true });
 });
 
-//module.exports = (req, res) => app(req, res);
-
 module.exports = app;
-
-
-//const express = require('express');
-
-//const app = express();
-
-//app.get('/', (req, res) => {
-//    res.send('API alive');
-//});
-
-//app.get('/led', (req, res) => {
-//    res.json({ led: true });
-//});
-
-//module.exports = app;
 
 //////////////////////////
 
