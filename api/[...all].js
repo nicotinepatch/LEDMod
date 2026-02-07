@@ -62,6 +62,18 @@ app.post('/api/state', async (req, res) => {
     res.json(newState);
 });
 
+// hit counter
+app.get('/api/hitCount', async (req, res) => {
+    const state = await kv.get(state) || defaultState;
+    res.json({ totalHits: state.totalHits });
+});
+
+app.post('/api/hitCount', async (req, res) => {
+    const state = await kv.get("state") || defaultState;
+    state.totalHits++; // Increment hit count
+    res.json({ status: 'ok', totalHits: state.totalHits });
+});
+
 module.exports = app;
 
 ////////////////////////// Each route seperate (end points need to have /api prefix for Vercel deployment) //////////////////////////

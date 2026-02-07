@@ -1,10 +1,4 @@
-﻿// ===== ON PAGE LOAD =====
-// Fetch the current state from the server AND parse JSON into JS object
-const currState = fetch('/api/state').then(r => r.json()); // Method is GET by default, requires no payload/body
-console.log('Current state from server:', currState);
-console.log('is on?: ' + currState.on);
-// Update the UI to reflect the current state (at file end for buttons, in relevant sections for rest)
-// ========================
+﻿initUI();
 
 // ------ TOGGLE BUTTONS
 // Get the button elements
@@ -12,8 +6,8 @@ const toggleBtn = document.getElementById('toggle-btn');
 const controlBtn = document.getElementById('toggle-btn-control');
 
 // Track the state (true = ON, false = OFF)
-let isOn = currState.on;
-let webCont = currState.webOverride;
+let isOn = false;
+let webCont = false;
 
 // Add click event listener
 toggleBtn.addEventListener('click', function () {
@@ -56,7 +50,6 @@ controlBtn.addEventListener('click', function () {
 
 // ------ MODE DROP DOWN
 const modeVal = document.getElementById('mode');
-modeVal.value = currState.mode; // Set initial value based on server state
 modeVal.addEventListener('change', function () {
     // mode
     fetch('/api/state', {
@@ -69,8 +62,6 @@ modeVal.addEventListener('change', function () {
 // ------ SLIDER
 const brightness = document.getElementById('brightness');
 const label = document.getElementById('slider-label');
-brightness.value = currState.brightness; // Set initial value based on server state
-label.textContent = brightness.value + '%'; // Set initial label text
 
 brightness.addEventListener('input', () => {
     const value = brightness.value;
@@ -187,36 +178,69 @@ sofiasButt_on.addEventListener('click', function () {
         weight += 50;
         hitComment.style.weight = JSON.stringify(weight);
 
-        //// Button was hit:
-        //// 1. Update total hit counter in server by signalling the hits occurance
-        //fetch('/hitCount', {
-        //    method: 'POST',
-        //    headers: { 'Content-Type': 'application/json' },
-        //    body: JSON.stringify({ colour })
-        //});
+        // Button was hit:
+        // 1. Update total hit counter in server by signalling the hits occurance
+        fetch('/api/hitCount', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ colour })
+        });
 
-        //// 2. Get the new hit counter value from the server (default fetch method is GET)
-        //let newTotal = fetch('/hitCount');
+        // 2. Get the new hit counter value from the server (default fetch method is GET)
+        let newTotal = 100;// await fetch('/api/hitCount').then(res => res.json().totalHits);
 
-        //// 3. Update value in html
-        //sumHitComment.textContent = "Total Lifetime Slaps: " + newTotal;
+        // 3. Update value in html
+        sumHitComment.textContent = "Total Lifetime Slaps: " + newTotal;
     }
 });
 
-// ====== INIT STATE ON PAGE LOAD (BUTTONS) ======
-// Toggle buttons
-if (currState.on) toggleBtn.click(); // Simulate a click to set the correct state and UI
-if (currState.webOverride) controlBtn.click();
-
-// Colour buttons
-let presetSelected = false;
-for (let i = 0; i < colourBtns.length; i++) {
-    if (currState.colour === colMap[i]) {
-        presetSelected = true;
-        colourBtns[i].click();
-        break;
+// ======================== FUNCTIONS =======================
+async function initUI() {
+    try {
+        const response = await fetch('/api/state');
+        const currState = await response.json();
+    } catch (err) {
+        console.error('Error fetching state:', err);
+        return;
     }
+
+    console.log('Current state:', currState);
+
+    setupUI(currState);
 }
-if (!presetSelected) {
-    colourPicker.click();
+
+function setupUI(currState) {
+    isOn = currState.on;
+    webCont = currState.webOverride;
+
+    // toggle buttons
+    if (isOn) {
+        toggleBtn.value = 'ON';
+        toggleBtn.classList.add('on');
+    }
+
+    if (webCont) {
+        controlBtn.value = 'Web Control';
+        controlBtn.classList.add('on');
+    }
+
+    // mode dropdown
+    modeVal.value = currState.mode;
+
+    // slider
+    brightness.value = currState.brightness;
+    label.textContent = brightness.value + '%';
+
+    // Colour buttons
+    let presetSelected = false;
+    for (let i = 0; i < colourBtns.length; i++) {
+        if (currState.colour === colMap[i]) {
+            presetSelected = true;
+            colourBtns[i].click();
+            break;
+        }
+    }
+    if (!presetSelected) {
+        colourPicker.click();
+    }
 }
