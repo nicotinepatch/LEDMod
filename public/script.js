@@ -148,7 +148,7 @@ colourPicker.addEventListener('input', function () {
 const sofiasButt_on = document.getElementById('tiagottaflatass');
 const hitLabel = document.getElementById('hitButton-label');
 const hitComment = document.getElementById('butt-comment');
-const sumHitComment = document.getElementById('totalHitCount
+const sumHitComment = document.getElementById('totalHitCount');
 let hitsAtInit = 0;
 let hitCount = 0;
 let currRed = 0;
@@ -281,5 +281,5 @@ function setupUI(currState) {
 
     // Hit count
     sumHitComment.textContent = "Total Lifetime Slaps: " + currState.totalHits;
-    hitsAtInit = currState.totalHits;
+    hitsAtInit = currState.totalHits;z
 }
