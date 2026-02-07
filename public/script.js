@@ -148,7 +148,8 @@ colourPicker.addEventListener('input', function () {
 const sofiasButt_on = document.getElementById('tiagottaflatass');
 const hitLabel = document.getElementById('hitButton-label');
 const hitComment = document.getElementById('butt-comment');
-const sumHitComment = document.getElementById('totalHitCount');
+const sumHitComment = document.getElementById('totalHitCount
+let hitsAtInit = 0;
 let hitCount = 0;
 let currRed = 0;
 let weight = 200;
@@ -180,24 +181,35 @@ sofiasButt_on.addEventListener('click', async function () {
 
         // Button was hit:
         // 1. Update total hit counter in server by signalling the hits occurance
-        // 2. Get the new hit counter value from the server (POST req responds with the new hit count value)
         const res = await fetch('/api/hitCount', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ hit: true })
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                sumHitComment.textContent = "Total Lifetime Slaps: " + data.totalHits;
-            })
-            .catch(err => console.error('Error updating hit count:', err));
 
-        //// 2b. Parse data
-        //const newTotal = await res.json().totalHits;
+        // 2. Update value in html
+        sumHitComment.textContent = "Total Lifetime Slaps: " + (hitsAtInit + hitCount);
 
-        //// 3. Update value in html
-        //sumHitComment.textContent = "Total Lifetime Slaps: " + newTotal;
+        //// Button was hit:
+        //// 1. Update total hit counter in server by signalling the hits occurance
+        //// 2. Get the new hit counter value from the server (POST req responds with the new hit count value)
+        //const res = await fetch('/api/hitCount', {
+        //    method: 'POST',
+        //    headers: { 'Content-Type': 'application/json' },
+        //    body: JSON.stringify({ hit: true })
+        //})
+        //    .then(res => res.json())
+        //    .then(data => {
+        //        console.log(data);
+        //        sumHitComment.textContent = "Total Lifetime Slaps: " + data.totalHits;
+        //    })
+        //    .catch(err => console.error('Error updating hit count:', err));
+
+        ////// 2b. Parse data
+        ////const newTotal = await res.json().totalHits;
+
+        ////// 3. Update value in html
+        ////sumHitComment.textContent = "Total Lifetime Slaps: " + newTotal;
     }
 });
 
@@ -269,4 +281,5 @@ function setupUI(currState) {
 
     // Hit count
     sumHitComment.textContent = "Total Lifetime Slaps: " + currState.totalHits;
+    hitsAtInit = currState.totalHits;
 }
