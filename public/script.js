@@ -208,6 +208,7 @@ async function initUI() {
 }
 
 function setupUI(currState) {
+    console.log('INIT UI');
     isOn = currState.on;
     webCont = currState.webOverride;
 

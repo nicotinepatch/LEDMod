@@ -12,6 +12,10 @@ body {
     margin: 0;
 }
 
+body main .loading {
+    opacity: 0;
+}
+
 header {
     background-color: rgb(167, 53, 171);
     padding: 5px 10px 20px 0;
