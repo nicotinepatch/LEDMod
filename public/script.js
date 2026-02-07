@@ -186,9 +186,10 @@ sofiasButt_on.addEventListener('click', async function () {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ hit: true })
         })
-            .then(res => {
-                console.log(res.json());
-                sumHitComment.textContent = "Total Lifetime Slaps: " + res.json().totalHits;
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                sumHitComment.textContent = "Total Lifetime Slaps: " + data.totalHits;
             })
             .catch(err => console.error('Error updating hit count:', err));
 
