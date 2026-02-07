@@ -12,7 +12,8 @@ body {
     margin: 0;
 }
 
-body main .loading {
+/* > is the child operator in CSS and JS selectors*/
+body > main.loading {
     opacity: 0;
 }
 
