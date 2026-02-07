@@ -72,7 +72,7 @@ app.post('/api/hitCount', async (req, res) => {
     const state = await kv.get("state") || defaultState;
     state.totalHits++;                                      // Increment hit count
     kv.set("state", state);                                 // Save updated state back to KV)
-    res.json({ status: 'ok', totalHits: state.totalHits });
+    res.json({ status: 'ok', totalHits: state.totalHits }); // Pass back the updated hit count
 });
 
 module.exports = app;

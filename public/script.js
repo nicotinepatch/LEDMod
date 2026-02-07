@@ -152,7 +152,7 @@ const sumHitComment = document.getElementById('totalHitCount');
 let hitCount = 0;
 let currRed = 0;
 let weight = 200;
-sofiasButt_on.addEventListener('click', function () {
+sofiasButt_on.addEventListener('click', async function () {
     hitCount++;
     hitLabel.textContent = "Hit Count: " + JSON.stringify(hitCount);
 
@@ -180,14 +180,15 @@ sofiasButt_on.addEventListener('click', function () {
 
         // Button was hit:
         // 1. Update total hit counter in server by signalling the hits occurance
-        fetch('/api/hitCount', {
+        // 2. Get the new hit counter value from the server (POST req responds with the new hit count value)
+        const res = await fetch('/api/hitCount', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ hit: true })
         });
 
-        // 2. Get the new hit counter value from the server (default fetch method is GET)
-        let newTotal = 100;// await fetch('/api/hitCount').then(res => res.json().totalHits);
+        // 2b. Parse data
+        const newTotal = await res.json().totalHits;
 
         // 3. Update value in html
         sumHitComment.textContent = "Total Lifetime Slaps: " + newTotal;
@@ -244,17 +245,20 @@ function setupUI(currState) {
     // Colour buttons
     let presetSelected = false;
     colourPicker.parentElement.classList.remove('on')
-    for (let i = 0; i < colourBtns.length; i++) {
-        console.log(`Preset ${i} colour: ${colMap[i]}`);
+    int btnIndex = 0;
+    for (const [preset, col] of Object.entries(colMap)) {
+        btnIndex++;
+        console.log(`${btnIndex}: Checking preset ${preset} with colour ${col} against current state colour ${currState.colour}`);
 
-        colourBtns[i].classList.remove('on')
-        if (currState.colour === colMap[i]) {
+        colourBtns[btnIndex].classList.remove('on')
+        if (currState.colour === col) {
             presetSelected = true;
-            colourBtns[i].classList.add('on');
+            colourBtns[btnIndex].classList.add('on');
             console.log(` - SELECTED`);
         }
         console.log(` - NOT SELECTED`);
     }
+
     console.log('Preset selected?', presetSelected);
     if (!presetSelected) {
         colourPicker.parentElement.classList.add('on');
