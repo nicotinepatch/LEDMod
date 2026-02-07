@@ -281,5 +281,5 @@ function setupUI(currState) {
 
     // Hit count
     sumHitComment.textContent = "Total Lifetime Slaps: " + currState.totalHits;
-    hitsAtInit = currState.totalHits;z
+    hitsAtInit = currState.totalHits;
 }
