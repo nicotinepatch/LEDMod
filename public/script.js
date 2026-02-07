@@ -245,7 +245,7 @@ function setupUI(currState) {
     // Colour buttons
     let presetSelected = false;
     colourPicker.parentElement.classList.remove('on')
-    int btnIndex = 0;
+    let btnIndex = 0;
     for (const [preset, col] of Object.entries(colMap)) {
         btnIndex++;
         console.log(`${btnIndex}: Checking preset ${preset} with colour ${col} against current state colour ${currState.colour}`);
