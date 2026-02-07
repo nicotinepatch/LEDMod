@@ -240,12 +240,17 @@ function setupUI(currState) {
     let presetSelected = false;
     colourPicker.parentElement.classList.remove('on')
     for (let i = 0; i < colourBtns.length; i++) {
+        console.log(`Preset ${i} colour: ${colMap[i]}`);
+
         colourBtns[i].classList.remove('on')
         if (currState.colour === colMap[i]) {
             presetSelected = true;
             colourBtns[i].classList.add('on');
+            console.log(` - SELECTED`);
         }
+        console.log(` - NOT SELECTED`);
     }
+    console.log('Preset selected?', presetSelected);
     if (!presetSelected) {
         colourPicker.parentElement.classList.add('on');
     }
