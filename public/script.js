@@ -238,14 +238,15 @@ function setupUI(currState) {
 
     // Colour buttons
     let presetSelected = false;
+    colourPicker.parentElement.classList.remove('on')
     for (let i = 0; i < colourBtns.length; i++) {
+        colourBtns[i].classList.remove('on')
         if (currState.colour === colMap[i]) {
             presetSelected = true;
-            colourBtns[i].click();
-            break;
+            colourBtns[i].classList.add('on');
         }
     }
     if (!presetSelected) {
-        colourPicker.click();
+        colourPicker.parentElement.classList.add('on');
     }
 }
