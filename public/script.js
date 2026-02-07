@@ -213,7 +213,6 @@ async function initUI() {
 }
 
 function setupUI(currState) {
-    console.log('INIT UI');
     isOn = currState.on;
     webCont = currState.webOverride;
 
@@ -248,18 +247,14 @@ function setupUI(currState) {
     let btnIndex = 0;
     for (const [preset, col] of Object.entries(colMap)) {
         btnIndex++;
-        console.log(`${btnIndex}: Checking preset ${preset} with colour ${col} against current state colour ${currState.colour}`);
 
         colourBtns[btnIndex].classList.remove('on')
         if (currState.colour === col) {
             presetSelected = true;
             colourBtns[btnIndex].classList.add('on');
-            console.log(` - SELECTED`);
         }
-        console.log(` - NOT SELECTED`);
     }
 
-    console.log('Preset selected?', presetSelected);
     if (!presetSelected) {
         colourPicker.parentElement.classList.add('on');
     }
