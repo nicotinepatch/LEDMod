@@ -64,7 +64,7 @@ app.post('/api/state', async (req, res) => {
 
 // hit counter
 app.get('/api/hitCount', async (req, res) => {
-    const state = await kv.get(state) || defaultState;
+    const state = await kv.get("state") || defaultState;
     res.json({ totalHits: state.totalHits });
 });
 
