@@ -17,8 +17,9 @@ const defaultState = {
     updatedAt: new Date().toISOString() // For testing and data validation
 };
 
-app.post('/api/forceInit', async (req, res) => {
+app.get('/api/forceInit', async (req, res) => {
     await kv.set("state", defaultState);
+    res.json({ status: 'ok', message: 'State initialized to default values' });
 });
 
 // Doesn't work: needs to be in index.js
