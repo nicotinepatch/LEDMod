@@ -1,4 +1,5 @@
-﻿initUI();
+﻿document.body.main.classList.add('loading');
+initUI();
 
 // ------ TOGGLE BUTTONS
 // Get the button elements
@@ -204,6 +205,8 @@ async function initUI() {
     } catch (err) {
         console.error('Error fetching state:', err);
         return;
+    } finally {
+        document.body.main.classList.remove('loading');
     }
 }
 
