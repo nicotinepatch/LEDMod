@@ -199,14 +199,12 @@ async function initUI() {
     try {
         const response = await fetch('/api/state');
         const currState = await response.json();
+        console.log('Current state:', currState);
+        setupUI(currState);
     } catch (err) {
         console.error('Error fetching state:', err);
         return;
     }
-
-    console.log('Current state:', currState);
-
-    setupUI(currState);
 }
 
 function setupUI(currState) {
@@ -230,6 +228,13 @@ function setupUI(currState) {
     // slider
     brightness.value = currState.brightness;
     label.textContent = brightness.value + '%';
+    brightness.style.background = `
+        linear-gradient(
+            to right,
+            rgb(74, 17, 76) ${brightness.value}%,
+            #ddd ${ brightness.value}%
+        )
+    `;
 
     // Colour buttons
     let presetSelected = false;
