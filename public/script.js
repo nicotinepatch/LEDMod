@@ -185,14 +185,16 @@ sofiasButt_on.addEventListener('click', async function () {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ hit: true })
-        });
-        console.log("hit count response: " + res.json());
+        })
+            .then(res => sumHitComment.textContent = "Total Lifetime Slaps: " + res.json().totalHits)
+            .catch(err => console.error('Error updating hit count:', err))
+            .finally(res => console.log(res.json()));
 
-        // 2b. Parse data
-        const newTotal = await res.json().totalHits;
+        //// 2b. Parse data
+        //const newTotal = await res.json().totalHits;
 
-        // 3. Update value in html
-        sumHitComment.textContent = "Total Lifetime Slaps: " + newTotal;
+        //// 3. Update value in html
+        //sumHitComment.textContent = "Total Lifetime Slaps: " + newTotal;
     }
 });
 
@@ -214,7 +216,6 @@ async function initUI() {
 }
 
 function setupUI(currState) {
-    console.log('INIT UI');
     isOn = currState.on;
     webCont = currState.webOverride;
 
@@ -258,8 +259,8 @@ function setupUI(currState) {
         btnIndex++;
     }
 
-    console.log('Preset selected?', presetSelected);
     if (!presetSelected) {
         colourPicker.parentElement.classList.add('on');
+        colourPicker.value = currState.colour;
     }
 }
