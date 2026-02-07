@@ -1,5 +1,4 @@
 ﻿document.body.main.classList.add('loading');
-initUI();
 
 // ------ TOGGLE BUTTONS
 // Get the button elements
@@ -194,6 +193,8 @@ sofiasButt_on.addEventListener('click', function () {
         sumHitComment.textContent = "Total Lifetime Slaps: " + newTotal;
     }
 });
+
+initUI();
 
 // ======================== FUNCTIONS =======================
 async function initUI() {
