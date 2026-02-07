@@ -266,4 +266,7 @@ function setupUI(currState) {
         colourPicker.parentElement.classList.add('on');
         colourPicker.value = currState.colour;
     }
+
+    // Hit count
+    sumHitComment.textContent = "Total Lifetime Slaps: " + currState.totalHits;
 }
