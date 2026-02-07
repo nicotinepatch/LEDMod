@@ -183,7 +183,7 @@ sofiasButt_on.addEventListener('click', function () {
         fetch('/api/hitCount', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ colour })
+            body: JSON.stringify({ hit: true })
         });
 
         // 2. Get the new hit counter value from the server (default fetch method is GET)
