@@ -186,6 +186,7 @@ sofiasButt_on.addEventListener('click', async function () {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ hit: true })
         });
+        console.log("hit count response: " + res);
 
         // 2b. Parse data
         const newTotal = await res.json().totalHits;
