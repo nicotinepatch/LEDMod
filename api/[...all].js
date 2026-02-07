@@ -10,26 +10,15 @@ const { kv } = require('@vercel/kv');
 const defaultState = {
     webOverride: false,
     on: false,
-    brightness: 50,
+    brightness: 100,
     mode: 0,
     colour: "0x000000",
     totalHits: 0,
     updatedAt: new Date().toISOString() // For testing and data validation
 };
 
-app.get('/api/testkv', async (req, res) => {
-    try {
-        console.log("Testing KV...");
-
-        await kv.set("test:key", "hello");
-        const value = await kv.get("test:key");
-
-        res.json({ success: true, value });
-
-    } catch (err) {
-        console.error("KV ERROR:", err);
-        res.status(500).json({ error: err.message });
-    }
+app.post('/api/forceInit', async (req, res) => {
+    await kv.set("state", defaultState);
 });
 
 // Doesn't work: needs to be in index.js
@@ -40,7 +29,7 @@ app.get('/api/testkv', async (req, res) => {
 // UNIFIED ROUTES FOR SIMIPLICITY (SEE BELOW FOR SEPARATE ROUTES)
 // [...all].js will match all routes under /api, so we can use it to handle all API requests in one file:
 // - All / api /... can be handled like this, e.g /api/info, /api/led, /api/mode, /api/ANYTHING...
-app.get("/api/state", async (req, res) => {
+app.get('/api/state', async (req, res) => {
     const state = await kv.get("state") || defaultState;      // if state doesn't exist yet (kv.get returns null), use empty object as default
     res.json(state);
 });
