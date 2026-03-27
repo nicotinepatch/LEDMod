@@ -13,10 +13,10 @@ body {
 }
 
 /* > is the child operator in CSS and JS selectors*/
-    body > main.loading {
+    /* body > main.loading {
         opacity: 0;
         pointer-events: none;
-    }
+    } */
 
 header {
     background-color: rgb(167, 53, 171);
